@@ -34,7 +34,7 @@ This command will create the following directories:
 To compare images between the `vrt-expected` and `vrt-actual` directories, run:
 
 ```bash
-python vrt.py compare
+vrt compare
 ```
 
 This command will:
