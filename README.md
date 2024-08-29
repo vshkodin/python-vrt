@@ -24,10 +24,10 @@ To use the `ImageDifference` class in your project, follow these steps:
 Example:
 
 ```python
-from image_comparer import ImageDifference
+from tests.tests import ImageDifference
 
-expectation = 'path/to/expected_screenshot.png'
-actual = 'path/to/actual_screenshot.png'
+expectation = 'path/to/expected_screenshot_001.png'
+actual = 'path/to/actual_screenshot_001.png'
 difference = 'path/to/output_difference.png'
 
 image_diff = ImageDifference(expectation, actual)
@@ -40,17 +40,17 @@ Below are examples of an expected screenshot, an actual screenshot, and the gene
 
 ### Expected Screenshot
 
-![Expected Screenshot](expected_screenshot.png)
+![Expected Screenshot](tests/expected_screenshot_001.png)
 
 ### Actual Screenshot
 
-![Actual Screenshot](actual_screenshot.png)
+![Actual Screenshot](tests/actual_screenshot_001.png)
 
 ### Difference Image
 
 The differences are highlighted in purple.
 
-![Difference Image](output_difference.png)
+![Difference Image](tests/output_difference.png)
 
 ## Contributing
 
