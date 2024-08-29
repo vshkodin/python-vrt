@@ -12,7 +12,7 @@ This CLI tool is designed to help with visual regression testing by comparing im
 ## Installation
 
 ```bash
-pip install vrt-python
+pip install vrt_python
 ```
 
 ## Usage
