@@ -1,58 +1,60 @@
 
-# Image Difference Utility
+# Visual Regression Testing (VRT) CLI Tool
 
-## Description
+This CLI tool is designed to help with visual regression testing by comparing images from two directories (`vrt-expected` and `vrt-actual`). It also provides functionality to approve new baseline images.
 
-This utility provides a simple way to compare two images (expected and actual screenshots) and generates a third image highlighting the differences with a purple overlay. It's designed to help quickly identify visual discrepancies in automated testing environments or for manual verification purposes.
+## Features
+
+- **Initialization**: Create the necessary directories for storing expected and actual images.
+- **Comparison**: Compare images in the `vrt-expected` and `vrt-actual` directories and generate a difference image if discrepancies are found.
+- **Approval**: Approve actual images and move them to the `vrt-expected` directory, renaming them as required.
 
 ## Installation
 
 ```bash
-pip install -r requirements.txt  
+pip install vrt-python
 ```
-
-Clone this repository or copy the `image_comparer.py` file into your project's `utils` directory.
 
 ## Usage
 
-To use the `ImageDifference` class in your project, follow these steps:
+### 1. Initialize Directories
 
-1. Import the class from the `image_comparer.py` file.
-2. Instantiate the class with paths to your expected and actual images.
-3. Call the `generate_difference_image` method with the path where you want the difference image saved.
+To set up the necessary directories (`vrt-expected` and `vrt-actual`), run:
 
-Example:
-
-```python
-from image_comparer import ImageDifference
-
-expectation = 'path/to/expected_screenshot.png'
-actual = 'path/to/actual_screenshot.png'
-difference = 'path/to/output_difference.png'
-
-image_diff = ImageDifference(expectation, actual)
-image_diff.generate_difference_image(difference)
+```bash
+vrt init
 ```
 
-## Example
+This command will create the following directories:
+- `vrt-expected`: Where you store your expected baseline images.
+- `vrt-actual`: Where you store the actual images to compare against the baseline.
 
-Below are examples of an expected screenshot, an actual screenshot, and the generated difference image output by the utility.
+### 2. Compare Images
 
-### Expected Screenshot
+To compare images between the `vrt-expected` and `vrt-actual` directories, run:
 
-![Expected Screenshot](expected_screenshot.png)
+```bash
+vrt compare
+```
 
-### Actual Screenshot
+This command will:
+- Compare each image in `vrt-expected` with the corresponding image in `vrt-actual`.
+- Generate a difference image in the `vrt-difference` directory if discrepancies are found.
+- Print the percentage of difference for each image.
 
-![Actual Screenshot](actual_screenshot.png)
+### 3. Approve Actual Images
 
-### Difference Image
+To approve the actual images and move them to the `vrt-expected` directory, run:
 
-The differences are highlighted in purple.
+```bash
+vrt approve
+```
 
-![Difference Image](output_difference.png)
+This command will:
+- Copy images from the `vrt-actual` directory to the `vrt-expected` directory.
+- Rename the images by replacing the `actual_` prefix with `expected_`.
 
-## Contributing
 
-Contributions to improve the utility are welcome. Please follow the standard pull request process to submit improvements or bug fixes.
+## License
 
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
