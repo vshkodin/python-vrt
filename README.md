@@ -11,17 +11,8 @@ This CLI tool is designed to help with visual regression testing by comparing im
 
 ## Installation
 
-Ensure you have Python installed. You also need to have the required packages:
-
 ```bash
-pip install Pillow numpy
-```
-
-Clone the repository and navigate to the project directory:
-
-```bash
-git clone https://github.com/vshkodin/python-vrt.git
-cd python-vrt
+pip install vrt-python
 ```
 
 ## Usage
@@ -31,7 +22,7 @@ cd python-vrt
 To set up the necessary directories (`vrt-expected` and `vrt-actual`), run:
 
 ```bash
-python vrt.py init
+vrt init
 ```
 
 This command will create the following directories:
@@ -56,31 +47,13 @@ This command will:
 To approve the actual images and move them to the `vrt-expected` directory, run:
 
 ```bash
-python vrt.py approve
+vrt approve
 ```
 
 This command will:
 - Copy images from the `vrt-actual` directory to the `vrt-expected` directory.
 - Rename the images by replacing the `actual_` prefix with `expected_`.
 
-### Example Workflow
-
-1. **Initialize**: Set up directories.
-    ```bash
-    python vrt.py init
-    ```
-
-2. **Add Images**: Place your expected images in `vrt-expected` and actual images in `vrt-actual`.
-
-3. **Compare**: Run the comparison.
-    ```bash
-    python vrt.py compare
-    ```
-
-4. **Review and Approve**: If the differences are acceptable, approve the actual images.
-    ```bash
-    python vrt.py approve
-    ```
 
 ## License
 
