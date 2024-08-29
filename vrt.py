@@ -49,9 +49,11 @@ def compare_images():
     expected_dir = 'vrt-expected'
     actual_dir = 'vrt-actual'
     output_dir = 'vrt-difference'
+    results = {}
     os.makedirs(output_dir, exist_ok=True)
+    list_files = os.listdir(expected_dir)
 
-    for filename in os.listdir(expected_dir):
+    for filename in list_files:
         expected_path = os.path.join(expected_dir, filename)
         actual_path = os.path.join(actual_dir, filename.replace("expected", "actual"))
 
@@ -60,9 +62,13 @@ def compare_images():
             difference_path = os.path.join(output_dir, diff_filename)
             image_diff = ImageDifference(expected_path, actual_path)
             difference_percentage = image_diff.generate_difference_image(difference_path)
+            results[diff_filename] = f"{difference_percentage:.2f}"
             print(f"Compared {filename}: {difference_percentage:.2f}% difference")
         else:
             print(f"Actual image not found for {filename}")
+    for result in results:
+       assert results[result] == '0.00', f"{results}"
+
 
 def approve_images():
     actual_dir = 'vrt-actual'
